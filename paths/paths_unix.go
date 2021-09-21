@@ -61,3 +61,7 @@ func xdgDataHome() string {
 	}
 	return filepath.Join(os.Getenv("HOME"), ".local/share")
 }
+
+func ensureStateDirPerms(dirPath string) error {
+	return os.Chmod(dirPath, 0700)
+}

@@ -59,3 +59,13 @@ func DefaultTailscaledStateFile() string {
 	}
 	return ""
 }
+
+// MkStateDir ensures that the directory dirPath both exists and has the correct
+// permisions.
+func MkStateDir(dirPath string) error {
+	if err := os.MkdirAll(dirPath, 0700); err != nil {
+		return err
+	}
+
+	return ensureStateDirPerms(dirPath)
+}
